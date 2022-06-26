@@ -1,0 +1,35 @@
+Requirements
+Create a C# project with nUnit and Selenium. It should be able to accomplish the following:
+
+·        Data Drive tests from a file
+
+·        Run tests in Parallel
+
+·        Use the Page Object Model (https://docs.specflow.org/projects/specflow/en/latest/Guides/PageObjectModel.html)
+
+NOTES
+- https://www.lambdatest.com/blog/nunit-testing-tutorial-for-selenium-csharp/
+- https://www.guru99.com/selenium-csharp-tutorial.html
+
+Followed the steps from:
+https://medium.com/@tanveer.khan/dotnet-core-selenium-nunit-visual-studio-code-2d489ccb2089
+
+1.  Installed C# and prepared VS Code for development. 
+2.  "dotnet new console -o Matt" from the directory created for this challenge to create the *.csproj. 
+3.  "dotnet build" in the new *.csproj directory.
+4.  Add below packages in order to make this project as NUnit and Selenium Test Project using "dotnet add package [packageName]"
+    - "dotnet add package NUnit"
+    - "dotnet add package NUnit3TestAdapter"
+    - "dotnet add package Selenium.WebDriver"
+    - "dotnet add package Selenium.Support"
+    - "dotnet add package Selenium.WebDriver.ChromeDriver"
+    - "dotnet add package Microsoft.NET.Test.Sdk"
+5.  Updated Chrome to 103 (Chrome Beta)
+6.  Installed .Net SDK. 
+7.  "dotnet test .\Matt\"
+8.  Data-Driven Tests from a File following:  https://www.browserstack.com/guide/data-driven-framework-in-selenium#:~:text=to%20change%20it.-,What%20is%20Data%20Driven%20Testing%20Framework%20in%20Selenium%3F,test%20case%E2%80%9D%20(code).
+    -  Official Microsoft data-driven unit test documentation:  https://docs.microsoft.com/en-us/visualstudio/test/how-to-create-a-data-driven-unit-test?view=vs-2022
+    - Page Object Model in Selenium:  https://www.browserstack.com/guide/page-object-model-in-selenium
+    - Step by Step N-Unit Test Project in VS Code with Selenium Web Driver and C#:  https://www.youtube.com/watch?v=4pD4eQDbW6Q
+    - Installed Nuget Package Manager
+9.  You have to look at .\Desktop\Matt's Selenium Challenge\Matt\Program.cs to see the option to Debug All Tests, pressing F5 isn't the ticket. 
