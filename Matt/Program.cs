@@ -32,6 +32,7 @@ namespace Matt
 
         // Options to Debug and/or Run Test appear in VS Code above the FirstTest method below after building this project. 
         [Test, TestCaseSource(nameof(SearchTerms))]
+        [Parallelizable(scope: ParallelScope.All)]
         public void FirstTest(string searchTerm)
         {
             // Create a new instance of Chrome for each search to perform all searches asynchronously and in parallel. 
