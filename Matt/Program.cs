@@ -2,7 +2,7 @@
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 
-namespace Test.Selenium
+namespace Matt
 {
     public class TestClass
     {
@@ -10,41 +10,42 @@ namespace Test.Selenium
         // It will give an error about version number on earlier ones. 
         // In a VS Code ( >= version 1.68.1) Terminal, do a "dotnet clean," followed by a "dotnet build" 
         //  then you should see the options to "Run Test" and "Debug Test" above FirstTest Method below. 
-        private const String google = "http://www.google.com";
-        private const String relativePath = @"..\..\..\..\Matt\searchTerms.txt";
+        private const string Google = "http://www.google.com";
+        private const string RelativePath = @"..\..\..\..\Matt\searchTerms.txt";
 
         // searchTerms will be driven by input from the text file. 
-        private List<String> searchTerms = new List<string>();
+        private List<string> _searchTerms = new();
 
         [SetUp]
         public void TestSetup()
         {
-            var currentDir = Directory.GetCurrentDirectory();
-            if (File.Exists(relativePath)) 
+            if (File.Exists(RelativePath)) 
             {
-                searchTerms = File.ReadAllLines(relativePath).ToList();
+                _searchTerms = File.ReadAllLines(RelativePath).ToList();
             }
         }
 
-        // Options to Debug and/or Run Test appear in VS Code above the FirstTest method below after building this project. 
-        [Test]
-        public void FirstTest()
+        public static string[] SearchTerms()
         {
-            Parallel.ForEach(searchTerms, searchTerm =>
-            {
-                    // Create a new instance of Chrome for each search to perform all searches asynchronously and in parallel. 
-                    ChromeDriver driver = new ChromeDriver();
-                    driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(30);
-                    driver.Navigate().GoToUrl(google);
+            return !File.Exists(RelativePath) ? new[] {""} : File.ReadAllLines(RelativePath).ToArray();
+        }
 
-                    // The name "q" doesn't seem nearly specific enough, i.e. not an ID - thanks Google - and this is a potential risk. 
-                    var elementName = "q";
-                    var googleSearchBox = driver?.FindElement(By.Name(elementName)); 
-                    googleSearchBox?.SendKeys(searchTerm);
-                    googleSearchBox?.SendKeys(Keys.Enter);
-                    driver?.Close();
-                    driver?.Quit();
-            });
+        // Options to Debug and/or Run Test appear in VS Code above the FirstTest method below after building this project. 
+        [Test, TestCaseSource(nameof(SearchTerms))]
+        public void FirstTest(string searchTerm)
+        {
+            // Create a new instance of Chrome for each search to perform all searches asynchronously and in parallel. 
+            var driver = new ChromeDriver();
+            driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(30);
+            driver.Navigate().GoToUrl(Google);
+
+            // The name "q" doesn't seem nearly specific enough, i.e. not an ID - thanks Google - and this is a potential risk. 
+            const string ElementName = "q";
+            var googleSearchBox = driver?.FindElement(By.Name(ElementName)); 
+            googleSearchBox?.SendKeys(searchTerm);
+            googleSearchBox?.SendKeys(Keys.Enter);
+            driver?.Close();
+            driver?.Quit();
         }
 
         [TearDown]
