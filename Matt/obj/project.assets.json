@@ -1279,24 +1279,32 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\PETRA\\.nuget\\packages\\": {}
+    "C:\\Users\\EAngleton\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\PETRA\\Desktop\\Matt's Selenium Challenge\\Matt\\Matt.csproj",
+      "projectUniqueName": "C:\\Users\\EAngleton\\Desktop\\Git\\Matt-s-Selenium-Challenge\\Matt\\Matt.csproj",
       "projectName": "Matt",
-      "projectPath": "C:\\Users\\PETRA\\Desktop\\Matt's Selenium Challenge\\Matt\\Matt.csproj",
-      "packagesPath": "C:\\Users\\PETRA\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\PETRA\\Desktop\\Matt's Selenium Challenge\\Matt\\obj\\",
+      "projectPath": "C:\\Users\\EAngleton\\Desktop\\Git\\Matt-s-Selenium-Challenge\\Matt\\Matt.csproj",
+      "packagesPath": "C:\\Users\\EAngleton\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\EAngleton\\Desktop\\Git\\Matt-s-Selenium-Challenge\\Matt\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\PETRA\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\EAngleton\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "http://nuget.trad.tradestation.com/nuget/nuget": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
