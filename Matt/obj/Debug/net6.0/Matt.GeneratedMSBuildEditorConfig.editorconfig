@@ -7,4 +7,8 @@ build_property.InvariantGlobalization =
 build_property.PlatformNeutralAssembly = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Matt
+<<<<<<< HEAD
 build_property.ProjectDir = C:\Users\EAngleton\Desktop\Git\Matt-s-Selenium-Challenge\Matt\
+=======
+build_property.ProjectDir = c:\Users\EAngleton\Desktop\Git\MattSelenium\Matt\
+>>>>>>> c824cf0fd1852f4a65c35b3d786fe50ad9a24339
