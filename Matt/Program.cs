@@ -29,24 +29,28 @@ namespace Matt
         {
             return !File.Exists(RelativePath) ? new[] {""} : File.ReadAllLines(RelativePath).ToArray();
         }
-
-        // Options to Debug and/or Run Test appear in VS Code above the FirstTest method below after building this project. 
-        [Test, TestCaseSource(nameof(SearchTerms))]
-        [Parallelizable(scope: ParallelScope.All)]
-        public void FirstTest(string searchTerm)
+        
+        public ChromeDriver Driver()
         {
             // Create a new instance of Chrome for each search to perform all searches asynchronously and in parallel. 
             var driver = new ChromeDriver();
             driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(30);
             driver.Navigate().GoToUrl(Google);
+            return driver;
+        }
 
+        // Options to Debug and/or Run Test appear in VS Code above the FirstTest method below after building this project. 
+        [Test, TestCaseSource(nameof(SearchTerms))]
+        [Parallelizable(scope: ParallelScope.All)]
+        public void FirstTest(string searchTerm, ChromeDriver chromeDriver)
+        {
             // The name "q" doesn't seem nearly specific enough, i.e. not an ID - thanks Google - and this is a potential risk. 
             const string ElementName = "q";
-            var googleSearchBox = driver?.FindElement(By.Name(ElementName)); 
+            var googleSearchBox = chromeDriver?.FindElement(By.Name(ElementName)); 
             googleSearchBox?.SendKeys(searchTerm);
             googleSearchBox?.SendKeys(Keys.Enter);
-            driver?.Close();
-            driver?.Quit();
+            chromeDriver?.Close();
+            chromeDriver?.Quit();
         }
 
         [TearDown]
